@@ -14,7 +14,7 @@ Long and linked reads were individually assembled and then merged together. Afte
 ![Alt text](Earwig_assembly_pipeline.png?raw=true "Title")
 
 Workflow:
-1. Linked read assembly
+1. [Linked read assembly](Linked_reads_only_assembly.md)
 2. Long read assembly
 3. Merging two assemblies
 4. Further processing with long reads
