@@ -1,4 +1,4 @@
-Supernova (v.2.1.1) was used to assemble the linked reads with the following script. We used 660 million reads as input and all other default parameters.
+[Supernova (v.2.1.1)](https://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/using/running) was used to assemble the linked reads with the following script. We used 660 million reads as input and all other default parameters.
 
 ```
 #!/bin/bash -e
@@ -50,4 +50,4 @@ supernova mkoutput \
 ```
 
 After running this script we will get the assembly called `EW_10xSN.fasta.gz`
-We checked the assembly statistics with the Quast. [Script here](quast.sh)
+We checked the assembly statistics with the [Quast](https://github.com/ablab/quast). [Script here](quast.sh)
