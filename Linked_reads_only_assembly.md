@@ -49,5 +49,5 @@ supernova mkoutput \
         --outprefix=./EW_10xSN
 ```
 
-After running this script we will get the assembly called `EW_10xSN.fasta`
+After running this script we will get the assembly called `EW_10xSN.fasta.gz`
 We checked the assembly statistics with the Quast. [Script here](quast.sh)
