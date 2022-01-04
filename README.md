@@ -15,7 +15,7 @@ Long and linked reads were individually assembled and then merged together. Afte
 
 Workflow:
 1. [Linked read assembly](Linked_reads_only_assembly.md)
-2. Long read assembly
+2. [Long read assembly](Long_read_assembly.md)
 3. Merging two assemblies
 4. Further processing with long reads
 5. Further processing with linked reads
