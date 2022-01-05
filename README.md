@@ -13,13 +13,14 @@ Long and linked reads were individually assembled and then merged together. Afte
 
 ![Alt text](Earwig_assembly_pipeline.png?raw=true "Title")
 
-Workflow:
+Workflow and Scripts:
 1. [Linked read assembly](Linked_reads_only_assembly.md)
 2. [Long read assembly](Long_read_assembly.md)
 3. [Merging two assemblies](merging_assemblies.md)
 4. [Further processing with long reads](Processing_with_long_reads.md)
 5. [Further processing with linked reads](Processing_with_linked_reads.md)
-6. Processing with RNA-seq reads
+6. [Processing with RNA-seq reads](Processing_with_RNA-seq_reads.md)
+7. Final bits: Haplotigs removal, cleaning and polishing
 ---
 ## 2. Denovo repeat library
 A comprehensive denovo repeat library is prepared for the assembled genome. It was used for repeat content analysis, repeat masking and as input for annotation pipeline.
