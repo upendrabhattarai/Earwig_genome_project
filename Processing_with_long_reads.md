@@ -1,7 +1,7 @@
 ## 1. Purgehaplotigs
 
-We ran [Purgehaplotigs](https://bitbucket.org/mroachawri/purge_haplotigs/src/master/) on the merged assembly to remove haplotigs.
-Because of the low coverage of long reads, peaks overlapped so we setup the parameters for the coverage steps to only pick contigs to produce a haploid representation, but not merge or collapse sequences. as discussed in this [issue](https://bitbucket.org/mroachawri/purge_haplotigs/issues/69/low-coverage-dataset-unsure-of-parameters)
+We ran Purgehaplotigs on the merged assembly to remove haplotigs.
+Because of the low coverage of long reads, peaks overlapped so we setup the parameters for the coverage steps to only pick contigs to produce a haploid representation, but not to merge or collapse sequences. see [Purgehaplotig documentations for more](https://bitbucket.org/mroachawri/purge_haplotigs/src/master/). Output from this step was named as `curated.fasta`.
 
 `Scripts for Purgehaplotigs`
 
@@ -47,7 +47,6 @@ purge_haplotigs purge \
                 -g path/to/the/merged/assembly/EW_Flye_SN_merge.fasta \
                 -c coverage_stats.csv -b aligned.bam -d
 ```
-From the Purgehaplotigs, we will get `curated.fasta` as an output.
 ---
 ## 2. Rails & Cobbler
 
