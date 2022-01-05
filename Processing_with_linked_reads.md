@@ -87,3 +87,4 @@ arks-make arks draft=assembly \    # assembly file to scaffold should be in work
 ```
 
 ## 4. Rascaf
+We used two RNA-seq data (mRNA and totalRNA-seq) to scaffold the assembly with Rascaf.
