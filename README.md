@@ -17,7 +17,7 @@ Workflow:
 1. [Linked read assembly](Linked_reads_only_assembly.md)
 2. [Long read assembly](Long_read_assembly.md)
 3. [Merging two assemblies](merging_assemblies.md)
-4. Further processing with long reads
+4. [Further processing with long reads](Processing_with_long_reads.md)
 5. Further processing with linked reads
 6. Processing with RNA-seq reads
 ---
