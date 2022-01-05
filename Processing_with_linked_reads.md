@@ -26,7 +26,7 @@ ragtag.py scaffold \
  ```
  ## 2.ARBitR
  We used raw linked read data to scaffold the assembly with [ARBitR](https://github.com/markhilt/ARBitR)
- Before that, we had to process the assembly file and map linked-reads to the processed assembly using 'Longranger' [Scripts here](longranger.md). 
+ Before that, we had to process the assembly file and map linked-reads to the processed assembly using 'Longranger' [Scripts here](longranger-align.md). 
  The resulting `Bam` file was used as input for ARBitR.
  
  `Script to run ARBitR`
