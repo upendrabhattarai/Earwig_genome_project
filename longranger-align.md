@@ -1,4 +1,4 @@
-## Longranger pipeline
+## Longranger-align pipeline
 We used longranger to format the assembly and align the linked reads to it to get the aligned bam file. which was used as input for ARBitR
 
 `Script to run longranger`
