@@ -309,3 +309,4 @@ java -Xmx180G -jar $EBROOTPILON/pilon.jar --genome path/to/assembly/from/ragtag/
               --gapmargin 1 --mingap 10000000 --threads 10 --verbose --changes \
               2>Pilon.stderr.txt 1>Pilon.stdout.txt
 ```
+# We got the final assembly after completion of this step.
