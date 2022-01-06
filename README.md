@@ -20,7 +20,7 @@ Workflow and Scripts:
 4. [Further processing with long reads](Processing_with_long_reads.md)
 5. [Further processing with linked reads](Processing_with_linked_reads.md)
 6. [Processing with RNA-seq reads](Processing_with_RNA-seq_reads.md)
-7. [Final bits:](Final_bits.md) Haplotigs removal, cleaning and polishing
+7. [Final bits: Haplotigs removal, cleaning and polishing](Final_bits.md)
 ---
 ## 2. Denovo repeat library
 A comprehensive denovo repeat library is prepared for the assembled genome. It was used for repeat content analysis, repeat masking and as input for annotation pipeline.
