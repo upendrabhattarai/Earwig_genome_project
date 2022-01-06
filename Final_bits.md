@@ -1,4 +1,4 @@
-To Finalize our assembly, we ran sequentially with the folloing pipeline:
+To Finalize our assembly, we ran the folloing pipeline:
 
 ## 1. Purgehaplotigs
 
@@ -99,7 +99,7 @@ minimap2 -ax map-ont -t 10 path/to/assembly/from/ragtag/above/EW_Assembly.fasta 
 ```
 
 ### 3.2 Blastn hits
-We blasted the assembly against `nt` database following the Blobtools manual [How to get the dtabase)(https://blobtoolkit.genomehubs.org/install/#databases)
+We blasted the assembly against `nt` database following the Blobtools manual [How to get the dtabase](https://blobtoolkit.genomehubs.org/install/#databases)
 
 `Script for blastn`
 ```
@@ -238,6 +238,7 @@ From above script we got two output
 1. The filtered assembly `EW_Assembly.filtered.fasta` which is in `path/to/output/folder/filter`
 2. The other one is the inverse filtered file `EW_Assembly.filtered.inverse.fasta` which is in `path/to/output/folder/filter.inverse`
 
+## 4. RagTag
 Now we will use `EW_Assembly.filtered.inverse.fasta` to scaffold `EW_Assembly.filtered.fasta` with RagTag.
 
 `Script for RagTag`
@@ -262,4 +263,49 @@ export PATH="/nesi/nobackup/uoo02752/nematode/bin/miniconda3/bin:$PATH"
 ragtag.py scaffold path/to/output/folder/filter.inverse/EW_Assembly.filtered.inverse.fasta \
                   path/to/output/folder/filter/EW_Assembly.filtered.fasta
 ```
-We ran RagTag 4 times in series, taking t
+We ran RagTag four times in series, each time having the output from the last ragtag and `EW_Assembly.filtered.inverse.fasta` as inputs.
+We also noticed that we need to rename the sequence header on the ragtag output fasta file. We used the following oneliner to do so.
+```
+awk '/^>/{print ">Scaff_" ++i; next}{print}' Ragtag_assembly.fasta > Ragtag_assembly_header_renamed.fasta
+```
+## 5. Pilon
+This is the final step. We used the mRNA-seq data to finally polish the assembly with Pilon. we ran two iterations of this.
+
+`Script for pilong`
+```
+#!/bin/bash -e
+
+#SBATCH --nodes 1
+#SBATCH --cpus-per-task 1
+#SBATCH --ntasks 10
+#SBATCH --job-name pilon_EW
+#SBATCH --mem=180G
+#SBATCH --time=30:00:00
+#SBATCH --account=uoo02752
+#SBATCH --output=%x_%j.out
+#SBATCH --error=%x_%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=bhaup057@student.otago.ac.nz
+#SBATCH --hint=nomultithread
+
+module load Bowtie2/2.4.1-GCC-9.2.0
+module load SAMtools/1.12-GCC-9.2.0
+module load Python/3.9.5-gimkl-2020a
+module load Pilon/1.24-Java-15.0.2
+
+#First step is to map sequences to assembly with bowtie
+bowtie2-build path/to/assembly/from/ragtag/above/EW_assembly.fasta 
+              Earwig
+              
+bowtie2 -p 10 --local -x Earwig \
+              -1 path/to/R1/of/mRNA-seq/data/EW_all_merged_R1_trim.fq \
+               -2 path/to/R2/of/mRNA-seq/data/EW_all_merged_R2_trim.fq | samtools sort > EW_assembly.fasta.bam
+samtools index EW_assembly.fasta.bam EW_assembly.fasta.bai
+
+# Second is to run Pilon
+java -Xmx180G -jar $EBROOTPILON/pilon.jar --genome path/to/assembly/from/ragtag/above/EW_assembly.fasta \
+              --frags EW_assembly.fasta.bam --fix snps,indels \
+              --output path/to/output/EW_assembly.pilon \
+              --gapmargin 1 --mingap 10000000 --threads 10 --verbose --changes \
+              2>Pilon.stderr.txt 1>Pilon.stdout.txt
+```
