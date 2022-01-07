@@ -1,4 +1,4 @@
-# 1. Denovo repeat library
+# 1. Repeat library preparation
 ## ii. LTRharvest & LTRdigest
 We need to install GenomeTools first [See](http://genometools.org/)
 Finds LTR retrotransposons in the genome
