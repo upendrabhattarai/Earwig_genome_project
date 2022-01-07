@@ -30,7 +30,7 @@ Workflow:
       1. [Repeatmoduler](Denovo_repeat_library/Repeatmoduler.md)
       2. [LTRharvest & LTRdigest](Denovo_repeat_library/LTRharvest&LTRdigest.md)
       3. [TransposonPSI](Denovo_repeat_library/TransposonPSI.md)
-      4. Sine database
+      4. [Sine database](Denovo_repeat_library/SINE.md)
 2. Concatenating, filtering, and classifying repeats
       1. RepeatClassifier
 3. Repeat masking the genome
