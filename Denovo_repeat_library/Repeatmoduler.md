@@ -1,4 +1,4 @@
-# 1. De novo repeat identification
+# 1. Repeat library preparation
 ## i. RepeatModuler
 Repeatmodeler uses RECON, RepeatScout and Tandem Repeats Finder (TRF) to build a repeat library for an assembly.
 RECON is good in finding less conserved elements in the genome while RepeatScout finds highly conserved repetitive elements.
