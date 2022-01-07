@@ -11,16 +11,16 @@ The pipeline is presented in three parts:
 Genome is assembled using linked reads from 10x chromium and long reads from Oxford nanopore.
 Long and linked reads were individually assembled and then merged together. After multiple iterations of scaffolding, gapclosing, and haplotigs and contaminants removal, assembly was polished with mRNA-seq reads to obtain final assembly. Schematic representation in figure below (Created with BioRender.com).
 
-![Alt text](Earwig_assembly_pipeline.png?raw=true "Title")
+![Alt text](Genome_assembly/Earwig_assembly_pipeline.png?raw=true "Title")
 
 Workflow and Scripts:
-1. [Linked read assembly](Linked_reads_only_assembly.md)
-2. [Long read assembly](Long_read_assembly.md)
-3. [Merging two assemblies](merging_assemblies.md)
-4. [Further processing with long reads](Processing_with_long_reads.md)
-5. [Further processing with linked reads](Processing_with_linked_reads.md)
-6. [Processing with RNA-seq reads](Processing_with_RNA-seq_reads.md)
-7. [Final bits: Haplotigs removal, cleaning and polishing](Final_bits.md)
+1. [Linked read assembly](Genome_assembly/Linked_reads_only_assembly.md)
+2. [Long read assembly](Genome_assembly/Long_read_assembly.md)
+3. [Merging two assemblies](Genome_assembly/merging_assemblies.md)
+4. [Further processing with long reads](Genome_assembly/Processing_with_long_reads.md)
+5. [Further processing with linked reads](Genome_assembly/Processing_with_linked_reads.md)
+6. [Processing with RNA-seq reads](Genome_assembly/Processing_with_RNA-seq_reads.md)
+7. [Final bits: Haplotigs removal, cleaning and polishing](Genome_assembly/Final_bits.md)
 ---
 ## 2. Denovo repeat library
 A comprehensive denovo repeat library is prepared for the assembled genome. It was used for repeat content analysis, repeat masking and as input for annotation pipeline.
