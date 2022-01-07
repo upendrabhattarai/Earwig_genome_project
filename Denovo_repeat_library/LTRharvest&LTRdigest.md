@@ -1,7 +1,8 @@
 # 1. Repeat library preparation
 ## ii. LTRharvest & LTRdigest
 We need to install GenomeTools first [See](http://genometools.org/)
-Finds LTR retrotransposons in the genome
+Finds LTR retrotransposons in the genome.
+
 `Script for LTRharvest`
 ```
 #!/bin/bash -e
@@ -52,6 +53,7 @@ hmmconvert -2 hmm > PF03732.hmm
 ```
 Move `PF03732.hmm` to `GyDB_collection/profile` to keep them together with other `*.hmm` files
 Now annotate candidates with PHMM hits using LTRDigest
+
 `Script for LTRDigest`
 ```
 #!/bin/bash -e
