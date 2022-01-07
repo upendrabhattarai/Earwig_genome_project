@@ -26,18 +26,14 @@ Workflow and Scripts:
 A comprehensive denovo repeat library is prepared for the assembled genome. It was used for repeat content analysis, repeat masking and as input for annotation pipeline.
 
 Workflow:
-1. De novo repeat identification
+1. Repeat library preparation
       1. [Repeatmoduler](Denovo_repeat_library/Repeatmoduler.md)
       2. [LTRharvest & LTRdigest](Denovo_repeat_library/LTRharvest&LTRdigest.md)
-      3. TransposonPSI
-      4. Mite-tracker
-2. External repeat database
-      1. Sine database
-      2. Dfam database
-      3. Repbase database
-3. Concatenating, filtering, and classifying repeats
+      3. [TransposonPSI](Denovo_repeat_library/TransposonPSI.md)
+      4. Sine database
+2. Concatenating, filtering, and classifying repeats
       1. RepeatClassifier
-4. Repeat masking the genome
+3. Repeat masking the genome
       1. RepeatMasker
 
 ---
