@@ -1,6 +1,7 @@
-# 1. Denovo repeat library
+# 1. Repeat library preparation
 ## iii. TransposonPSI
 To install the software and for more detail information [see here](http://transposonpsi.sourceforge.net/).
+
 `Script to run TransposonPSI`
 ```
 #!/bin/bash -e
