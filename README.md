@@ -27,7 +27,7 @@ A comprehensive denovo repeat library is prepared for the assembled genome. It w
 
 Workflow:
 1. De novo repeat identification
-      1. Repeatmoduler
+      1. [Repeatmoduler](Denovo_repeat_library/Repeatmoduler.md)
       2. LTRharvest & LTRdigest
       3. TransposonPSI
       4. Mite-tracker
