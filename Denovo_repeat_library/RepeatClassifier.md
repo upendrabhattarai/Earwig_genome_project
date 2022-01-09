@@ -89,3 +89,5 @@ faSomeRecords -exclude Combined.rep.library.minlen50.usearch.fasta.classified Un
 ```
 The final Repeat library is `EW_Rep_CombinedLibrary.lib.minlen50.nr.classified.filtered.fa`
 
+PS: `faSomeRecords` script if needed is [here](https://github.com/santiagosnchez/faSomeRecords) 
+
