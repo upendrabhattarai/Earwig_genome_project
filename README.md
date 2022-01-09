@@ -32,7 +32,7 @@ Workflow:
       3. [TransposonPSI](Denovo_repeat_library/TransposonPSI.md)
       4. [Sine database](Denovo_repeat_library/SINE.md)
 2. Concatenating, filtering, and classifying repeats
-      1. RepeatClassifier
+      1. [RepeatClassifier](Denovo_repeat_library/RepeatClassifier.md)
 3. Repeat masking the genome
       1. RepeatMasker
 
