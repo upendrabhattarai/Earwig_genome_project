@@ -19,7 +19,7 @@ we used the prepared repeat library to repeat mask the genome.
 #SBATCH --mail-user=bhaup057@student.otago.ac.nz
 #SBATCH --hint=nomultithread
 
-
+module load RepeatModeler/2.0.2-Miniconda3 #Repeatmasker was installed together with repeatmoduler in this conda env.
 
 RepeatMasker -pa $SLURM_NTASKS -lib EW_Rep_CombinedLibrary.lib.minlen50.nr.classified.filtered.fa \
 EW_assembly.fasta --gff -dir ./
