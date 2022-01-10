@@ -2,8 +2,11 @@
 We used maker pipeline for the genome annotation.
 Some very useful resources we went through to make our pipeline work are:
 [Resource 1](http://weatherby.genetics.utah.edu/MAKER/wiki/index.php/MAKER_Tutorial_for_WGS_Assembly_and_Annotation_Winter_School_2018#Training_ab_initio_Gene_Predictors)
+
 [Resource 2](https://gist.github.com/darencard/bb1001ac1532dd4225b030cf0cd61ce2)
+
 [Resource 3](https://bioinformaticsworkbook.org/dataAnalysis/GenomeAnnotation/Intro_To_Maker.html#gsc.tab=0)
+
 [Resource 4](https://github.com/guillemylla/Crickets_Genome_Annotation/blob/master/G_bimaculatus/Protein_Coding_Genes.md)
 
 ## Downloading and formatting publicly available data
@@ -195,7 +198,8 @@ module load MAKER/2.31.9-gimkl-2020a
 
 srun maker -q -c $SLURM_NTASKS -base F.auricularia_Maker_R1 maker_opts.ctl maker_bopts.ctl maker_exe.ctl
 ```
-##Maker With Ab Initio Gene Predictors
+
+## Maker With Ab Initio Gene Predictors
 
 ## Training SNAP
 We used the output from the maker's first round to train SNAP
@@ -270,6 +274,7 @@ mv BUSCO_busco_ew_insecta ForficulaAuricularia
 cp -r  ForficulaAuricularia path/to/Augustus/config/file/MyAugustusConfig_Ew/species/
 ```
 # Maker 2nd round
+We have output from `SNAP`, `Augustus`, and `GeneMark-ES` as input for the second round of maker.
 First lets extract the mapping information from all our input data on the first round of maker as .gff files.
 So that we don't have to run blast again. This will save significant run time.
 
