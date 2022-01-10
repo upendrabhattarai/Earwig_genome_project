@@ -173,7 +173,7 @@ snoscan= #location of snoscan executable
 probuild=/scale_wlg_persistent/filesets/opt_nesi/CS400_centos7_bdw/GeneMark-ES/4.62-GCC-9.2.0/probuild #location of probuild executable (required for genemark)
 ```
 
-We ran maker job with the following script with 400Gb of memory in 36 cores.
+We ran maker job with the following script with 400Gb of total memory in 36 cores.
 `maker.sl`
 ```
 #!/bin/bash -e
@@ -195,6 +195,7 @@ module load MAKER/2.31.9-gimkl-2020a
 
 srun maker -q -c $SLURM_NTASKS -base F.auricularia_Maker_R1 maker_opts.ctl maker_bopts.ctl maker_exe.ctl
 ```
+##Maker With Ab Initio Gene Predictors
 
 ## Training SNAP
 We used the output from the maker's first round to train SNAP
