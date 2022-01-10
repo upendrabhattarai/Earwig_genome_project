@@ -41,8 +41,6 @@ Workflow:
 ## 3. Genome annotation
 Maker2 pipeline is used for genome annotation. mRNA-seq data is denovo assembled using Trinity. Other relavant publicly available datasets were downloaded and used as input.
 
-1. Denovo mRNA-seq assembly
-        i. Trimmomatic
-        ii. Trinity
-2. Downloading publicly available datasets
-3. Configuring and running Maker2 pipeline
+1. [Processing mRNA-seq data](Genome_annotation/Processing_mRNA_seq_data.md)
+2. [GeneMark-ES](Genome_annotation/GeneMark.md)
+3. [Configuring and running Maker2 pipeline](Genome_annotation/maker_pipeline.md)
