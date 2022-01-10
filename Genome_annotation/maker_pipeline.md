@@ -198,7 +198,12 @@ module load MAKER/2.31.9-gimkl-2020a
 
 srun maker -q -c $SLURM_NTASKS -base F.auricularia_Maker_R1 maker_opts.ctl maker_bopts.ctl maker_exe.ctl
 ```
-
+Togenarate a combined output
+```
+cd F.auricularia_Maker_R1
+fasta_merge -d F.auricularia_Maker_R1_master_datastore_index.log
+gff3_merge -d F.auricularia_Maker_R1_master_datastore_index.log
+```
 ## Maker With Ab Initio Gene Predictors
 
 ## Training SNAP
@@ -210,7 +215,7 @@ cd snap
 
 module load MAKER/2.31.9-gimkl-2020a
 
-gff3_merge -d path/to/F.auricularia_Maker_R1_maker_output/F.auricularia_Maker_R1_master_datastore_index.log
+cp path/to/F.auricularia_Maker_R1_maker_output/F.auricularia_Maker_R1.all.gff ./
 maker2zff F.auricularia_Maker_R1.all.gff
 fathom -categorize 1000 genome.ann genome.dna
 fathom -export 1000 -plus uni.ann uni.dna
@@ -226,7 +231,7 @@ mkdir augustus
 cd augustus
 module load BEDTools/2.29.2-GCC-9.2.0
 
-awk -v OFS="\t" '{ if ($3 == "mRNA") print $1, $4, $5 }' path/to/snap/F.auricularia_Maker_R1.all.gff | \
+awk -v OFS="\t" '{ if ($3 == "mRNA") print $1, $4, $5 }' path/to/F.auricularia_Maker_R1_maker_output/F.auricularia_Maker_R1.all.gff | \
 awk -v OFS="\t" '{ if ($2 < 1000) print $1, "0", $3+1000; else print $1, $2-1000, $3+1000 }' | \
 bedtools getfasta -fi path/to/EW_assembly.fasta -bed - -fo F.auricularia_Maker_R1_transcripts1000.fasta
 ```
@@ -282,7 +287,7 @@ To do so,
 ```
 mkdir maker_R1_outputs
 cd maker_R1_outputs
-gff3_merge -d path/to/F.auricularia_Maker_R1_maker_output/F.auricularia_Maker_R1_master_datastore_index.log
+cp path/to/F.auricularia_Maker_R1_maker_output/F.auricularia_Maker_R1.all.gff ./
 
 # Extract protein alignments
 awk '{ if ($2 == "protein2genome") print $0 }' F.auricularia_Maker_R1.all.gff > F.auricularia_Maker_all_R1_protein2genome.gff
