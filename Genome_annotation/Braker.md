@@ -1,4 +1,5 @@
-#Braker pipeline
+# Braker pipeline
+
 We used Braker to train Augustus with the RNA-seq reads and predictions from Genemark-ES.
 RNA-seq reads were aligned with `STAR` and sorted and indexed with samtools
 
