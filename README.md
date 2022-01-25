@@ -43,4 +43,5 @@ Maker2 pipeline is used for genome annotation. mRNA-seq data is denovo assembled
 
 1. [Processing mRNA-seq data](Genome_annotation/Processing_mRNA_seq_data.md)
 2. [GeneMark-ES](Genome_annotation/GeneMark.md)
-3. [Configuring and running Maker2 pipeline](Genome_annotation/maker_pipeline.md)
+3. [Braker](Genome_annotation/Braker.md)
+4. [Configuring and running Maker2 pipeline](Genome_annotation/maker_pipeline.md)
