@@ -1,13 +1,8 @@
 # Maker pipeline
 We used maker pipeline for the genome annotation.
 Some very useful resources we went through to make our pipeline work are:
-[Resource 1](http://weatherby.genetics.utah.edu/MAKER/wiki/index.php/MAKER_Tutorial_for_WGS_Assembly_and_Annotation_Winter_School_2018#Training_ab_initio_Gene_Predictors)
 
-[Resource 2](https://gist.github.com/darencard/bb1001ac1532dd4225b030cf0cd61ce2)
-
-[Resource 3](https://bioinformaticsworkbook.org/dataAnalysis/GenomeAnnotation/Intro_To_Maker.html#gsc.tab=0)
-
-[Resource 4](https://github.com/guillemylla/Crickets_Genome_Annotation/blob/master/G_bimaculatus/Protein_Coding_Genes.md)
+[Resource 1](http://weatherby.genetics.utah.edu/MAKER/wiki/index.php/MAKER_Tutorial_for_WGS_Assembly_and_Annotation_Winter_School_2018#Training_ab_initio_Gene_Predictors), [Resource 2](https://gist.github.com/darencard/bb1001ac1532dd4225b030cf0cd61ce2),[Resource 3](https://bioinformaticsworkbook.org/dataAnalysis/GenomeAnnotation/Intro_To_Maker.html#gsc.tab=0),[Resource 4](https://github.com/guillemylla/Crickets_Genome_Annotation/blob/master/G_bimaculatus/Protein_Coding_Genes.md)
 
 ## Downloading and formatting publicly available data
 We downloaded all the dermapteran protein and mRNA-seq data from NCBI (date: 12-Dec-2021)
@@ -225,59 +220,9 @@ mkdir snap.output
 hmm-assembler.pl F.auricularia_Maker_R1 . > snap.output/F.auricularia_Maker_R1.hmm
 ```
 ## Training Augustus
-To train Augustus, we take the regions containing mRNA annotations from our first round of Maker output with 1000bp on each side.
-```
-mkdir augustus
-cd augustus
-module load BEDTools/2.29.2-GCC-9.2.0
+We trained augustus using `Braker`, which we will be using in our maker pipeline.
+Busco is another popular program used to train Augustus for genome annotation. We experienced that Running busco with the whole genome assembly to train Augustus took forever. However, after the first round of maker, we can excise the regions containing mRNA annotation with 1000bp flanking regions each side and use that set to train Augustus with Busco. You can find the script [here](augustus_with_busco_from_annotated_subset.md) if you want to do so.
 
-awk -v OFS="\t" '{ if ($3 == "mRNA") print $1, $4, $5 }' path/to/F.auricularia_Maker_R1_maker_output/F.auricularia_Maker_R1.all.gff | \
-awk -v OFS="\t" '{ if ($2 < 1000) print $1, "0", $3+1000; else print $1, $2-1000, $3+1000 }' | \
-bedtools getfasta -fi path/to/EW_assembly.fasta -bed - -fo F.auricularia_Maker_R1_transcripts1000.fasta
-```
-We had to rename sequence header to make busco run on these extracted reads
-```
-awk '/^>/{print ">seq_" ++i; next}{print}' F.auricularia_Maker_R1_transcripts1000.fasta > F.auricularia_Maker_R1_transcripts1000_header_renamed.fasta
-```
-Ran Busco to train augustus 
-```
-#!/bin/bash -e
-
-#SBATCH --nodes 1
-#SBATCH --cpus-per-task 1
-#SBATCH --ntasks 36
-#SBATCH --job-name busco_maker.ew
-#SBATCH --mem=10G
-#SBATCH --time=20:00:00
-#SBATCH --account=uoo02752
-#SBATCH --output=%x_%j.out
-#SBATCH --error=%x_%j.err
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=bhaup057@student.otago.ac.nz
-#SBATCH --hint=nomultithread
-
-module load BUSCO/5.2.2-gimkl-2020a
-cp -r $AUGUSTUS_CONFIG_PATH path/to/Augustus/config/file/MyAugustusConfig_Ew
-export AUGUSTUS_CONFIG_PATH=path/to/Augustus/config/file/MyAugustusConfig_Ew
-
-busco --in path/to/F.auricularia_RL1st_maker.transcripts1000_header_renamed.fasta \
---out busco_ew_insecta -c 36 -m genome --long --augustus --augustus_parameters='--progress=true' \
--l insecta_odb10
-```
-It took ~18 hours to finish augustus training, while trying to train augustus from busco with whole genome assembly as input didn't even finish after 10 days.
-
-We have the augustus trained model in `busco_ew_insecta/run_insecta_odb10/augustus_output/retraining_parameters/BUSCO_busco_ew_insecta/` from busco working directory.
-we renamed the files and copied it to the species directory inside `path/to/Augustus/config/file/MyAugustusConfig_Ew`
-
-```
-cd busco_ew_insecta/run_insecta_odb10/augustus_output/retraining_parameters/BUSCO_busco_ew_insecta/
-rename  "BUSCO_busco_ew_insecta" "ForficulaAuricularia" *
-sed -i 's/BUSCO_busco_ew_insecta/ForficulaAuricularia/g' ForficulaAuricularia_parameters.cfg
-sed -i 's/BUSCO_busco_ew_insecta/ForficulaAuricularia/g' ForficulaAuricularia_parameters.cfg.orig1
-cd ..
-mv BUSCO_busco_ew_insecta ForficulaAuricularia
-cp -r  ForficulaAuricularia path/to/Augustus/config/file/MyAugustusConfig_Ew/species/
-```
 # Maker 2nd round
 We have output from `SNAP`, `Augustus`, and `GeneMark-ES` as input for the second round of maker.
 First lets extract the mapping information from all our input data on the first round of maker as .gff files.
