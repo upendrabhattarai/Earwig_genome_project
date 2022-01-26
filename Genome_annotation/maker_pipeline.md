@@ -453,6 +453,13 @@ gff3_merge -d F.auricularia_Maker_R2_master_datastore_index.log
 ```
 This gives us the final Maker annotation. We will post process the output to add functional annotation.
 
+To calculate the statistics and different outputs from the maker annotation we used `gaas_maker_merge_outputs_from_datastore.pl` script from [GAAS tools](https://github.com/NBISweden/GAAS). It has got easy conda installation.
+
+```
+gaas_maker_merge_outputs_from_datastore.pl -i path/to/maker/output/directory/maker_output/ -o gaas_maker_output
+```
+
+
 
 
 
