@@ -25,7 +25,7 @@ export PATH="/path/to/conda/environment/:$PATH" for dependencies
 ```
 We used following script to obtain the result in fasta format
 ```
-transposonPSI_2fasta.pl path/to/assembly/EW_assembly_renamed.fa EW_assembly_renamed.fa.TPSI.allHits.chains.bestPerLocus.fa
+transposonPSI_2fasta.pl path/to/assembly/EW_assembly_renamed.fa EW_assembly_renamed.fa.TPSI.allHits.chains.bestPerLocus
 ```
 
 `Script transposonPSI_2fasta.pl`
