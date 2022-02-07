@@ -85,7 +85,7 @@ awk -F "\t" '{print $1,$7}' Blast_out.txt  | sort | uniq | grep -i -v "transposo
 grep -i -v "transposable"  | grep -i -v "transposase" | awk '{print $1}' > Unknowns_with_Port_hit.txt
 ```
 ```
-faSomeRecords -exclude Combined.rep.library.minlen50.usearch.fasta.classified Unknowns_with_Port_hit.txt \ EW_Rep_CombinedLibrary.lib.minlen50.nr.classified.filtered.fa
+faSomeRecords -exclude Combined.rep.library.minlen50.usearch.fasta.classified Unknowns_with_Port_hit.txt EW_Rep_CombinedLibrary.lib.minlen50.nr.classified.filtered.fa
 ```
 The final Repeat library is `EW_Rep_CombinedLibrary.lib.minlen50.nr.classified.filtered.fa`
 
