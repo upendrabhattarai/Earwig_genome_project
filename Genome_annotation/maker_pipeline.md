@@ -284,7 +284,7 @@ snaphmm=path/to/snap.output/F.auricularia_Maker_R1.hmm #SNAP HMM file
 gmhmm= #GeneMark HMM file
 augustus_species=ForAuricularia #Augustus gene prediction species model
 fgenesh_par_file= #FGENESH parameter file
-pred_gff=/path/to/braker.gff #ab-initio predictions from an external GFF3 file
+pred_gff= #ab-initio predictions from an external GFF3 file
 model_gff= #annotated gene models from an external GFF3 file (annotation pass-through)
 est2genome=0 #infer gene predictions directly from ESTs, 1 = yes, 0 = no
 protein2genome=0 #infer predictions from protein homology, 1 = yes, 0 = no
