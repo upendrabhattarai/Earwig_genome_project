@@ -11,7 +11,7 @@ The pipeline is presented in three parts:
 Genome is assembled using linked reads from 10x chromium and long reads from Oxford nanopore.
 Long and linked reads were individually assembled and then merged together. After multiple iterations of scaffolding, gapclosing, and haplotigs and contaminants removal, assembly was polished with mRNA-seq reads to obtain final assembly. Schematic representation in figure below (Created with BioRender.com).
 
-![Alt text](Genome_assembly/Earwig_assembly_pipeline.png?raw=true "Title")
+![Alt text](Genome_assembly/Assembly_pipeline.png?raw=true "Title")
 
 Workflow and Scripts:
 1. [Linked read assembly](Genome_assembly/Linked_reads_only_assembly.md)
