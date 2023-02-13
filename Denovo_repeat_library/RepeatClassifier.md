@@ -52,6 +52,8 @@ grep "Unknown" Combined.rep.library.minlen50.usearch.fasta.classified > UnknownI
 sed -i 's/>//g' UnknownIDs.txt
 faSomeRecords Combined.rep.library.minlen50.usearch.fasta.classified UnknownIDs.txt Unknown_repeats.fasta
 ```
+can also use seqtk instead of faSomeRecords `seqtk subseq Combined.rep.library.minlen50.usearch.fasta.classified UnknownIDs.txt > Unknown_repeats.fasta`
+
 Blasting against downloaded Uniprot database
 
 ```
